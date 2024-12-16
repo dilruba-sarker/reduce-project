@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Show All Products</h1>
+    <button id="sort-button">Sort by Price</button>
+
+    <div id="display-container"></div>
+
+    <script>
+      const mobiles = [
+        { id: 1, name: "iPhone 14 Pro", brand: "Apple", price: 1099 },
+        { id: 2, name: "Galaxy S23 Ultra", brand: "Samsung", price: 1199 },
+        { id: 3, name: "Pixel 8 Pro", brand: "Google", price: 999 },
+        { id: 4, name: "Xperia 1 V", brand: "Sony", price: 1299 },
+        { id: 5, name: "Redmi Note 13 Pro", brand: "Xiaomi", price: 349 },
+        { id: 6, name: "OnePlus 12", brand: "OnePlus", price: 749 },
+        { id: 7, name: "Moto Edge 40 Pro", brand: "Motorola", price: 799 },
+        { id: 8, name: "Nothing Phone 2", brand: "Nothing", price: 599 }
+      ];
+
+      // Function to display all mobiles
+      const displayAll = (mobiles) => {
+        const container = document.getElementById("display-container");
+        container.innerHTML = ''; // Clear the container before re-displaying
+        mobiles.forEach(mobile => {
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <h1>Name: ${mobile.name}</h1>
+            <h2>Price: $${mobile.price}</h2>
+          `;
+          container.appendChild(div);
+        });
+      };
+
+      // Function to sort mobiles by price
+      const sortByPrice = () => {
+        mobiles.sort((a, b) => a.price - b.price); // Sort mobiles by price (ascending)
+        displayAll(mobiles); // Re-display the sorted mobiles
+      };
+
+      // Initial display of products
+      displayAll(mobiles);
+
+      // Attach click event to the sort button
+      document.getElementById("sort-button").addEventListener("click", sortByPrice);
+    </script>
+</body>
+</html>
